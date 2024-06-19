@@ -4,7 +4,8 @@ import App from "./App.tsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./ErrorPage.tsx";
-import Recipe, { loader as recipeLoader } from "./routes/Recipe.tsx";
+import Recipe from "./routes/Recipe.tsx";
+import { loader as recipeLoader } from "./routes/recipeLoader.ts";
 
 const router = createBrowserRouter([
     {

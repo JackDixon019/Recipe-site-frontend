@@ -1,8 +1,12 @@
 import { useRouteError } from "react-router-dom";
 
+interface TypeRouteError {
+    statusText?: string;
+    message?: string;
+}
+
 export default function ErrorPage() {
-    const error: any = useRouteError();
-    console.error(error);
+    const error = useRouteError() as TypeRouteError;
 
     return (
         <div id="error-page">
