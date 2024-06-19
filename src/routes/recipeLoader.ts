@@ -12,7 +12,7 @@ export interface Ingredient {
 }
 
 export interface TypeRecipe {
-    id: string;
+    _id: string;
     title: string;
     ingredients: Ingredient[];
     instructions: string[];
@@ -68,7 +68,23 @@ const recipes = [
 ];
 
 async function getRecipe(recipeId: string): Promise<TypeRecipe | undefined> {
-    return await recipes.find((recipe) => recipe.id === recipeId);
+    // return await recipes.find((recipe) => recipe.id === recipeId);
+    let url = import.meta.env.VITE_BACK_END_URL + "recipes/" + recipeId;
+    try {
+        let response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+        });
+        let interimObject = { ...(await response.json()) }._doc;
+        delete interimObject.__v;
+        let recipe: TypeRecipe = interimObject;
+        return recipe;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export async function loader({
