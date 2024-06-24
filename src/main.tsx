@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./ErrorPage.tsx";
 import Recipe from "./routes/Recipe.tsx";
 import { loader as recipeLoader } from "./routes/recipeLoader.ts";
+import RecipeForm from "./routes/RecipeForm.tsx";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
             },
         ],
     },
+    {
+        path:"/recipes/new",
+        element: <RecipeForm />,
+        errorElement: <ErrorPage />,
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

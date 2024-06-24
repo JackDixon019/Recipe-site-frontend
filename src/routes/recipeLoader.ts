@@ -5,16 +5,16 @@ export interface TypeRecipeParams {
         recipeId: string;
     };
 }
-export interface Ingredient {
+export interface TypeIngredient {
     count?: number;
     measurement?: string;
     name: string;
 }
 
 export interface TypeRecipe {
-    _id: string;
+    _id?: string;
     title: string;
-    ingredients: Ingredient[];
+    ingredients: TypeIngredient[];
     instructions: string[];
     time: number;
     description: string;
